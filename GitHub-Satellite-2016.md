@@ -123,29 +123,94 @@ eg which lines of code are not covered by tests that were previously.
 
 ## Every company is a software company - panel
 
-This was a group of VPs etc of big companies
+This was a group of VPs etc of big companies particating in a Q&A session.
+Software is not their core business, but have inevitably found themselves becoming software companies.
 
-https://twitter.com/vanderGoes/status/730387318473957376
+![panel](https://pbs.twimg.com/media/CiLbYVsWsAEnpPz.jpg)
 
-Best way to increase user experience is to improve development process
-Technology as a differentiator for a non-technology company
+Here are a few takeways :
 
-In Europe people are more focused on working on things that matter, cf career in US
-Developers are a scarce resource so it's important to create a nice environment for software development
+- Best way to increase user experience is to improve development process
+- Technology as a differentiator for a non-technology company
+- In Europe people are more focused on working on things that matter, cf career in US
+- Developers are a scarce resource so it's important to create a nice environment for software development
+- OSS is a given
+ - even if you buy software it contains open source
+ - more interesting question is what we can learn from the open source development culture
+ - makes people proud of code, which creates better code
+- Product managers etc also need to work with GitHub
+ - prioritizing features
+ - technical docs
+- Management has more trust in a group than an individual
+ - peer review
+ - developer-led organization and decision-making
 
-GitHub shows how important the social and collaborative aspect
+## Small incremental releases - Ron Cohen, Opbeat
 
-Banking is regulated, so the person who developed is not allowed to deploy, and someone else should review
+I didn't entirely agree with the point Ron was making,
+which is that each individual developer should release often and take full responsibility for the release.
+The idea being that it makes developers accountable if they have to fix their own code if it breaks in production,
+and that it increases velocity and quality.
+Maybe it works for a two-developer startup, but I don't think it works at a larger scale.
 
-OSS is a given
-- even if you buy software it contains open source
-- more interesting question is what we can learn from open source development - culture
-- makes people proud of code - better code
+He's also a proponent of feature flags so that code can quickly get into production without necessarily adding the feature immediately.
 
-Product managers etc also need to work with GitHub
-- prioritizing features
-- technical docs
+Where I do agree with him is a quote that he repeated regarding code reviews :
+> 10 lines of code = 10 issues  
+> 500 lines of code = "looks fine"
 
-PM etc has more trust in a group than an individual
-- peer review
-- developer-led organization / decision-making
+ie it's better to do code review on smaller pieces of code,
+which implies doing it more often.
+
+![code review](https://pbs.twimg.com/media/CiLdsULWkAA5sH1.jpg)
+
+## The API flow - Zdenek Nemec, Apiary
+
+A detailed and entertaining talk about the workflow to design and develop a good API.
+
+The **wrong way** is :
+1. write interface
+- document interface
+- read documentation
+- use interface
+
+This makes the API hard to change and scale.
+
+The **right way** is :
+1. Preparation
+- Design and prototype
+- Development
+- Delivery
+- Consumption
+- Analysis
+
+Step 2 can easily be prototyped with a mock server,
+which allows stakeholders to jump quickly to step 5.
+
+His
+[slides](https://speakerdeck.com/zdne/api-flow)
+and
+[website](https://apiary.io/how-to-build-api)
+go into more detail with detailed sub-steps for each step.
+
+It is apparent that building an API is more conceptual work than coding.
+
+## Closing keynote
+
+The closing keynote was about social responsiblity and helping people at the bottom of
+Maslow's hierarchy of needs.
+
+![Maslow's hierarchy of needs](https://pbs.twimg.com/media/CiL57SKWUAI6UnA.jpg)
+
+You can help solve world problems by contributing code instead of money.
+You can look for issues with the `help wanted` tag and contribute to your own area of expertise.
+
+There were speakers from two open source projects :
+
+- [Onoscape](https://github.com/fredhutch/oncoscape) - cancer research
+- [Code to Inspire](http://codetoinspire.org/) - educating girls in Afghanistan
+
+You don't need to know about cancer research to help them with some JavaScript optimization.
+
+There are many more projects on GitHub's
+[social impact showcase](https://github.com/showcases/social-impact).

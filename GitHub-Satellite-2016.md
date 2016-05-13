@@ -4,7 +4,7 @@
 was a one-day conference in Amsterdam, primarily aimed at developers.
 
 There was no focus on any specific technology since GitHub is just a platform,
-but insted a focus on the workflows of software development.
+but instead a focus on the *workflows* of software development.
 
 There was a `Develop` track and a `Discover` track.
 I had intended to attend the `Develop` track, but ended up on the `Discover` track,

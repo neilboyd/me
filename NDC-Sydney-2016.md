@@ -69,11 +69,54 @@ My main takeaways are:
 Conclusion: services should be logically separated and independant.
 
 
+## [Node.js Crash Course](http://ndcsydney.com/talk/node-js-crash-course-for-net-developers/)
+
+- JavaScript on the server
+- Not just back end - automation, CLI, desktop apps (Electron)
+- Simple, good performance, not much built into nodejs itself - everything is in npm
+- Single threaded event loop - handles concurrency very well
+
+## [Node.js microservices in the cloud for (almost) free](http://ndcsydney.com/talk/undo-accept-awesome-node-js-microservices-in-the-cloud-for-almost-free/)
+
+This was the first talk I went to on cloud functions, but it set the scene for several of the following talks.
+He was the first of many to use the buzzword *serverless* that kept recurring throughout the conference.
+It means that you only need to think about the code and not the servers -
+it scales automatically, no need to worry about failover, no need to have backup machines etc.
+
+There are three main cloud function providers which are basically interchangeable, in order of popularity:
+- [AWS lambda](https://aws.amazon.com/lambda/)
+- [Azure functions](https://azure.microsoft.com/en-us/services/functions/)
+- [Google functions](https://cloud.google.com/functions/)
+
+The premise of the talk was that AWS is free for the first million requests,
+and then $2 per million after that.
+He used AWS and Node.js for his example, but the principal is the same for any other technology choice.
+
+Functions can be triggered by anything -
+eg file saved, message queue, record added to database, schedule, web request, or some complex condition -
+which means you don't need to write the code that triggers the function.
+
+VMs are incentivized to keep the machine busy,
+whereas functions are incentivized to write small, isolated, loosely coupled modules -
+which is exactly the definition of a microservice.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Talks
 
-highlights here
 
-separate document with details
+Move talks details to a separate document and just keep highlights here
 
 
 ## [PubConf](http://pubconf.io/)

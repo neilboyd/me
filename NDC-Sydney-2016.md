@@ -23,6 +23,43 @@ This workshop was given by Sam Newman, the author of the authoratative book
 
 The slides for the workshop are available [here](http://bit.ly/ms-workshop).
 
+The workshop was about the theory and best practices of Microservices,
+not about any specific implementations.
+
+
+Write the highlights here
+
+I could write a separate document with the details,
+but maybe that's not worthwhile because I linked to the slides.
+
+
+
+
+
+## Talks
+
+highlights here
+
+separate document with details
+
+
+## [PubConf](http://pubconf.io/)
+
+The conference ended with a series of light-hearted lightning talks in a pub.
+The idea for PubConf came out of the philosophy "always do when you're sober what you say when you're drunk".
+The format is 20 slides in 5 minutes.
+There's one code of conduct rule: what happens in PubConf stays in PubConf.
+That means no photos and no quotes.
+
+The star of the conference, and of PubConf, was Troy Hunt.
+He was the subject of many of the jokes,
+and he gave a nice talk on the lighter side of security.
+
+PubConf ended with music from Dylan Beattie who said
+"two good things came out of Australia 40 years ago - Troy Hunt and AC/DC"
+before playing a version of "[Have I been pwned?](https://haveibeenpwned.com/)"
+to the tune of "Highway from Hell".
+He also played his hilarious hit "[We're Gonna Build a Framework](http://www.dylanbeattie.net/2016/05/were-gonna-build-framework.html)".
 
 
 
@@ -31,7 +68,7 @@ The slides for the workshop are available [here](http://bit.ly/ms-workshop).
 - Different range of tech - not just .Net
 - Lots of talk about functional programming, but attendees didn't seem so impressed that they would actually use it
 - Lots of talk about .Net Core, but still very much a 1.0 release
-- Mention slow internet and Pokemon Go
+- Mention slow internet and Pokemon Go (perhaps I can mention this in keynote talk)
 - Not much talk about security in microservices, although it was mentioned, which is why the talk was disappointing
 
 Microservice seems to be more of a concept and a buzzword than an actual thing

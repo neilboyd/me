@@ -100,7 +100,154 @@ VMs are incentivized to keep the machine busy,
 whereas functions are incentivized to write small, isolated, loosely coupled modules -
 which is exactly the definition of a microservice.
 
+## [Akka.Net and the Actor Model](http://ndcsydney.com/talk/workshop-introduction-to-akka-net-and-the-actor-model/)
 
+- [Akka.Net](http://getakka.net/) is an implementation of the actor model
+- all communication is via immutable messages
+- sender and recipient are decoupled and async
+- actors process one message at a time
+- actor state is thread safe
+- at-most-once message delivery
+  - ie it could be lost
+  - cf. at-least-once (could get duplicate) and exactly-once
+
+I got the impression that Akka.Net is a low level design of microservices.
+It doesn't describe the deployment scenario.
+For a more managed implementation you could use [Azure Service Fabric](https://azure.microsoft.com/en-us/services/service-fabric/).
+
+## [NBench: Automated Performance Testing for .NET](http://ndcsydney.com/talk/nbench-automated-performance-testing-for-net/)
+
+- performance is a feature
+- create a culture of measuring performance
+- it tends to improve over time once you start measuring it
+
+
+- NBench tests are like unit tests
+- failed assertion can fail CI build
+- two run modes: number of runs in a fixed time, or run a certain number of times
+
+## [Serverless - Cloud functions and the future of software architecture](http://ndcsydney.com/talk/serverless-cloud-functions-and-the-future-of-software-architecture/)
+
+DELETE THIS SECTION
+
+Serverless is a combination of compute and patterns:
+
+Compute:
+- aws lambda, azure functions - event driven
+- stateless - that's what makes it scalable
+
+Patterns:
+- compute as glue - orchestrating sending data around
+
+Overlaps with microservices but not the same thing
+
+Principles:
+1. Use a compute service to execute code in demand (don't run a server)
+2. Write single-purpose stateless functions
+3. Push-based, event-driven pipelines
+4. Create thicker, more powerful front ends (controversial)
+5. Use third party services
+
+## [ECMAScript 2015](http://ndcsydney.com/talk/there-still-be-dragons-in-the-new-javascript/)
+
+DELETE THIS SECTION
+
+Arrow functions - similar to lambda expressions in C# - can't be used to define a class member
+
+Templates - back ticks with ${x} - evaluated immediately - ie not really a template
+
+Classes have get/set functions similar to C#
+
+Modules - nothing is exported unless you explicitly do so
+Need to use something to implement in browser, eg WebPack
+
+
+He talked about all the crazy syntax
+- funny but not really useful unless you want to write or understand obtuse code
+
+## [Start taking advantage of functional programming](http://ndcsydney.com/talk/functional-programming-for-the-everyman/)
+
+This was a nice talk about how to gradually start using functional programming features in the languages you already use.
+
+C# Linq uses different terms to normal FP, eg select instead of map, but the concepts are the same. 
+
+In JavaScript use [lodash](https://lodash.com/) to get similar functional constructs:
+```JavaScript
+var _ = require('lodash')
+_.first(...).skip()....etc
+```
+
+The slides and examples are available [here](http://bit.ly/fp-for-everyman).
+
+## [Azure Machine Learning for the Developer](http://ndcsydney.com/talk/azure-machine-learning-for-the-developer/)
+
+Machine learning was previously the domain of data scientists,
+but these are in short supply and very expensive,
+so [Azure Machine Learning](https://azure.microsoft.com/en-us/services/machine-learning/)
+makes it accessible for developers. 
+
+- learn from data rather than following instruction
+- consider collecting *good* data in advance so that it makes it possible to do ML later
+- don't provide defaults, eg first item in dropdown (Afghan accountants)
+
+Steps:
+- define objective
+- collect data
+- prepare data
+- train models
+- evaluate models
+- publish
+- manage
+
+Use drag'n'drop to design experiments.
+There are lots of modules to choose from, eg select columns, clean missing values, etc.
+It's an experiment! If in doubt, just try something, then try something else.
+
+Once you have a trained model, deploy it as a web service to use for prediction.
+
+**If prediction accuracy is better than random then it's worthwhile**,
+eg when predicting one of four categories, better than 25% accuracy is good.
+
+## [Functional Architecture](http://ndcsydney.com/talk/functional-architecture-the-pits-of-success/)
+
+Very good talk about coding best practices that need to be enforced in object-oriented programming
+but come naturally in functional programming.
+
+FP defines a *pure function* as a function that has the same output for the same input, and no side effects.
+You can't call an impure function from a pure function
+(in Haskell it won't even compile),
+which means that functions that perform I/O (impure) will be on the outside
+and business logic will be in the center.
+Pure functions can be easily tested.
+A function can take another function as input, eg getting a value from a database -
+so the function is testable without having to, for example, mock a repository.
+
+## [Power BI for the Developer](http://ndcsydney.com/talk/power-bi-for-the-developer/)
+
+[Power BI](https://powerbi.microsoft.com/en-us/blog/power-bi-azure-ml/)
+makes a nice dashboard with nice data visualizations out of any data sets.
+
+- updated in real time
+- many pre-defined sources
+- API to push data from any data source
+- stream analytics - eg take in a stream of data and report on average temperature from last 5 minutes
+- can publish dashboard publicly to web
+
+## [.Net Core](http://ndcsydney.com/talk/what-does-an-open-source-microsoft-web-platform-look-like/)
+
+The aim of
+[.Net Core](https://www.microsoft.com/net/core)
+is to make .Net as easy to run JavaScript etc:
+```
+dotnet init
+dotnet new
+dotnet restore
+```
+
+PCL seemed like a good idea at the time, but it's the lowest common denominator.
+
+.Net Core is not a replacement for .Net 4.6 etc.
+Things like **W**PF, **Win**Forms, etc will never be in Core.
 
 
 
@@ -119,7 +266,7 @@ which is exactly the definition of a microservice.
 Move talks details to a separate document and just keep highlights here
 
 
-## [PubConf](http://pubconf.io/)
+## [PubConf](https://pubconf.io/)
 
 The conference ended with a series of light-hearted lightning talks in a pub.
 The idea for PubConf came out of the philosophy "always do when you're sober what you say when you're drunk".

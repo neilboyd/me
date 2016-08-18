@@ -1,8 +1,8 @@
 # [NDC Sydney](http://ndcsydney.com/) 1-5 August 2016
 
-NDC started at a small developer conference in Norway in 2008, extended to London in 2013,
+NDC started as a small developer conference in Norway in 2008, extended to London in 2013,
 and I attended the first one in Sydney in 2016.
-It has kept to it's roots as a small and friendly conference
+It has kept to its roots as a small and friendly conference.
 
 I attended a two-day workshop before the conference, the three days of the conference,
 and the tiny informal [PubConf](#pubconf) on the last evening. 
@@ -23,7 +23,7 @@ Watch this space for the [videos](https://vimeo.com/ndcconferences) to become av
 ## [Workshop: Design and Implementation of Microservices](http://ndcsydney.com/workshop/design-and-implementation-of-microservices/)
 
 This workshop was given by Sam Newman, the author of the authoratative book
-[Building Microservices](http://samnewman.io/books/building_microservices/).
+"[Building Microservices](http://samnewman.io/books/building_microservices/)".
 It was about the theory and best practices of Microservices, not about any specific implementations.
 The slides for the workshop are available [here](http://bit.ly/ms-workshop).
 
@@ -47,7 +47,7 @@ My main takeaways are:
 - building on REST can have some advantages such as caching, but this relies on correct implementation, eg only caching 200 responses, and not returning errors with 200 (like SOAP does)
 - building on REST tends to leave some things unknown, such as when there's an error, where's the message
 - orchestration vs choreography:
-  - orchestration: tell other processes what to do and monitor status - disadvantage is that services become dumb and orhcestrator becomes god
+  - orchestration: tell other processes what to do and monitor status - disadvantage is that services become dumb and orchestrator becomes god
   - choreography: services run by themselves, eg listening on a queue - disadvantage is how to know when something failed
 - moving to a microservice architecture:
   - do it slowly because it takes time to learn how to manage the services
@@ -59,7 +59,7 @@ My main takeaways are:
     - may actually be faster because database isn't doing referential integrity
     - need to handle transactional integrity ourselves
     - surfaces new failure modes - maybe it was already a problem but we didn't know about it
-- have a separate database for reporting
+- have a separate database for reporting:
   - keep in sync with events - do a full sync every now and then in case any errors occured
   - need to consider data freshness
   - to prevent problems with broken relationships, never allow deleting, or never allow updating
@@ -76,7 +76,8 @@ Conclusion: services should be logically separated and independant.
 
 - JavaScript on the server
 - Not just back end - automation, CLI, desktop apps (Electron)
-- Simple, good performance, not much built into nodejs itself - everything is in npm
+- Simple, good performance
+- Not much built into nodejs itself - everything is in npm
 - Single threaded event loop - handles concurrency very well
 
 ## [Node.js microservices in the cloud for (almost) free](http://ndcsydney.com/talk/undo-accept-awesome-node-js-microservices-in-the-cloud-for-almost-free/)
@@ -123,15 +124,13 @@ For a more managed implementation you could use [Azure Service Fabric](https://a
 - performance is a feature
 - create a culture of measuring performance
 - it tends to improve over time once you start measuring it
-
-
 - NBench tests are like unit tests
 - failed assertion can fail CI build
 - two run modes: number of runs in a fixed time, or run a certain number of times
 
 ## [Start taking advantage of functional programming](http://ndcsydney.com/talk/functional-programming-for-the-everyman/)
 
-This was a nice talk about how to gradually start using functional programming features in the languages you already use.
+How to gradually start using functional programming features in the languages you already use.
 
 C# Linq names functions using SQL terms rather than normal FP terms, eg select instead of map, but the concepts are the same.
 
@@ -213,14 +212,17 @@ PCL seemed like a good idea at the time, but it's the lowest common denominator.
 .Net Core is not a replacement for .Net 4.6 etc.
 Things like **W**PF, **Win**Forms, etc will never be in Core.
 
+.Net Core got a bad press because of the re-organizations leading up to the 1.0 release,
+but that was due to re-organizations within Microsoft.
+
 ## [Practical microservice security](http://ndcsydney.com/talk/practical-microservice-security/)
 
-The talk title included "microservice" but I think that was just to be buzzword-friendly.
+The talk included "microservice" in the title but I think that was just to be buzzword-friendly.
 It was about security in general.
 
 - Security is about Confidentiality, Integrity, Availability (CIA!)
 - Microsoft defines the [STRIDE](https://msdn.microsoft.com/en-us/library/ee823878(v=cs.20).aspx) threat model,
-comparable to [OWASP](https://www.owasp.org/).
+comparable to [OWASP](https://www.owasp.org/)
 - Auth vs auth - why acronyms make you insecure
 - Do input validation between components
 - Security problem: make lots of services and then forget about them
@@ -242,9 +244,8 @@ The format is 20 slides in 5 minutes.
 There's one code of conduct rule: what happens in PubConf stays in PubConf.
 That means no photos and no quotes.
 
-The star of the conference, and of PubConf, was Troy Hunt.
-He was the subject of many of the jokes,
-and he gave a nice talk on the lighter side of security.
+The star of NDC, and of PubConf, was Troy Hunt.
+He was the subject of many of the jokes, and he gave a nice talk on the lighter side of security.
 
 PubConf ended with music from Dylan Beattie who said
 "two good things came out of Australia 40 years ago - Troy Hunt and AC/DC"

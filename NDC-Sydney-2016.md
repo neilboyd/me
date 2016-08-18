@@ -5,16 +5,19 @@ and I attended the first one in Sydney in 2016.
 It has kept to it's roots as a small and friendly conference
 
 I attended a two-day workshop before the conference, the three days of the conference,
-and the tiny informal PubConf on the last evening. 
+and the tiny informal [PubConf](#pubconf) on the last evening. 
+
+The technical level of the talks and the audience was fairly high.
+This is better than other conferences I've been to which have been at more of a beginner's level.
 
 The recurring themes of the conference were:
 
 - microservices
 - serverless architecture
+- functional programming
 - .Net Core
 
-The technical level of the talks and the audience was fairly high.
-This is better than other conferences I've been to which have been at more of a beginner's level.
+Watch this space for the [videos](https://vimeo.com/ndcconferences) to become available.
 
 
 ## [Workshop: Design and Implementation of Microservices](http://ndcsydney.com/workshop/design-and-implementation-of-microservices/)
@@ -69,7 +72,7 @@ My main takeaways are:
 Conclusion: services should be logically separated and independant.
 
 
-## [Node.js Crash Course](http://ndcsydney.com/talk/node-js-crash-course-for-net-developers/)
+## [Node.js crash course](http://ndcsydney.com/talk/node-js-crash-course-for-net-developers/)
 
 - JavaScript on the server
 - Not just back end - automation, CLI, desktop apps (Electron)
@@ -108,7 +111,7 @@ which is exactly the definition of a microservice.
 - actors process one message at a time
 - actor state is thread safe
 - at-most-once message delivery
-  - ie it could be lost
+  - ie. it could be lost
   - cf. at-least-once (could get duplicate) and exactly-once
 
 I got the impression that Akka.Net is a low level design of microservices.
@@ -125,45 +128,6 @@ For a more managed implementation you could use [Azure Service Fabric](https://a
 - NBench tests are like unit tests
 - failed assertion can fail CI build
 - two run modes: number of runs in a fixed time, or run a certain number of times
-
-## [Serverless - Cloud functions and the future of software architecture](http://ndcsydney.com/talk/serverless-cloud-functions-and-the-future-of-software-architecture/)
-
-DELETE THIS SECTION
-
-Serverless is a combination of compute and patterns:
-
-Compute:
-- aws lambda, azure functions - event driven
-- stateless - that's what makes it scalable
-
-Patterns:
-- compute as glue - orchestrating sending data around
-
-Overlaps with microservices but not the same thing
-
-Principles:
-1. Use a compute service to execute code in demand (don't run a server)
-2. Write single-purpose stateless functions
-3. Push-based, event-driven pipelines
-4. Create thicker, more powerful front ends (controversial)
-5. Use third party services
-
-## [ECMAScript 2015](http://ndcsydney.com/talk/there-still-be-dragons-in-the-new-javascript/)
-
-DELETE THIS SECTION
-
-Arrow functions - similar to lambda expressions in C# - can't be used to define a class member
-
-Templates - back ticks with ${x} - evaluated immediately - ie not really a template
-
-Classes have get/set functions similar to C#
-
-Modules - nothing is exported unless you explicitly do so
-Need to use something to implement in browser, eg WebPack
-
-
-He talked about all the crazy syntax
-- funny but not really useful unless you want to write or understand obtuse code
 
 ## [Start taking advantage of functional programming](http://ndcsydney.com/talk/functional-programming-for-the-everyman/)
 
@@ -288,16 +252,3 @@ before playing a version of "[Have I been pwned?](https://haveibeenpwned.com/)"
 to the tune of "Highway from Hell".
 He also played his hilarious hit "[We're Gonna Build a Framework](http://www.dylanbeattie.net/2016/05/were-gonna-build-framework.html)".
 
-
-
-## Notes to include somewhere in text
-
-- Different range of tech - not just .Net
-- Lots of talk about functional programming, but attendees didn't seem so impressed that they would actually use it
-- Lots of talk about .Net Core, but still very much a 1.0 release
-- Mention slow internet and Pokemon Go (perhaps I can mention this in keynote talk)
-- Not much talk about security in microservices, although it was mentioned, which is why the talk was disappointing
-
-Microservice seems to be more of a concept and a buzzword than an actual thing
-
-[Videos](https://vimeo.com/ndcconferences)

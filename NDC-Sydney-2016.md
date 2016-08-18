@@ -169,7 +169,7 @@ He talked about all the crazy syntax
 
 This was a nice talk about how to gradually start using functional programming features in the languages you already use.
 
-C# Linq uses different terms to normal FP, eg select instead of map, but the concepts are the same. 
+C# Linq names functions using SQL terms rather than normal FP terms, eg select instead of map, but the concepts are the same.
 
 In JavaScript use [lodash](https://lodash.com/) to get similar functional constructs:
 ```JavaScript
@@ -237,7 +237,7 @@ makes a nice dashboard with nice data visualizations out of any data sets.
 
 The aim of
 [.Net Core](https://www.microsoft.com/net/core)
-is to make .Net as easy to run JavaScript etc:
+is to make .Net as easy to run as JavaScript etc:
 ```
 dotnet init
 dotnet new
@@ -249,21 +249,25 @@ PCL seemed like a good idea at the time, but it's the lowest common denominator.
 .Net Core is not a replacement for .Net 4.6 etc.
 Things like **W**PF, **Win**Forms, etc will never be in Core.
 
+## [Practical microservice security](http://ndcsydney.com/talk/practical-microservice-security/)
 
+The talk title included "microservice" but I think that was just to be buzzword-friendly.
+It was about security in general.
 
+- Security is about Confidentiality, Integrity, Availability (CIA!)
+- Microsoft defines the [STRIDE](https://msdn.microsoft.com/en-us/library/ee823878(v=cs.20).aspx) threat model,
+comparable to [OWASP](https://www.owasp.org/).
+- Auth vs auth - why acronyms make you insecure
+- Do input validation between components
+- Security problem: make lots of services and then forget about them
+- Log everything:
+  - store securely, away from production
+  - immutable (don't let hackers delete logs)
+  - look at the logs
 
-
-
-
-
-
-
-
-
-## Talks
-
-
-Move talks details to a separate document and just keep highlights here
+Good resources:
+- [NIST](http://www.nist.gov/) - security standards and list of company's security record
+- [VSAQ](https://github.com/google/vsaq) - security questionnaire to send to vendors to assess third parties
 
 
 ## [PubConf](https://pubconf.io/)

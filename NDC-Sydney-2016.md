@@ -17,7 +17,7 @@ The recurring themes of the conference were:
 - functional programming
 - .Net Core
 
-Watch this space for the [videos](https://vimeo.com/ndcconferences) to become available.
+Watch this space for the [videos](https://vimeo.com/channels/1120652) to become available.
 
 
 ## [Workshop: Design and Implementation of Microservices](http://ndcsydney.com/workshop/design-and-implementation-of-microservices/)

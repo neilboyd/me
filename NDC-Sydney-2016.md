@@ -20,7 +20,7 @@ The recurring themes of the conference were:
 Watch this space for the [videos](https://vimeo.com/channels/1120652) to become available.
 
 
-## [Workshop: Design and Implementation of Microservices](http://webcache.googleusercontent.com/search?q=cache:1Z2ZgNTwSRIJ:ndcsydney.com/workshop/design-and-implementation-of-microservices/)
+## Workshop: Design and Implementation of Microservices
 
 This workshop was given by Sam Newman, the author of the authoratative book
 "[Building Microservices](http://samnewman.io/books/building_microservices/)".
@@ -72,7 +72,7 @@ My main takeaways are:
 Conclusion: services should be logically separated and independant.
 
 
-## [Node.js crash course](http://webcache.googleusercontent.com/search?q=cache:i4_8xSufQVYJ:ndcsydney.com/talk/node-js-crash-course-for-net-developers/) *David Neal*
+## Node.js crash course *David Neal*
 
 - JavaScript on the server
 - Not just back end - automation, CLI, desktop apps (Electron)
@@ -80,7 +80,7 @@ Conclusion: services should be logically separated and independant.
 - Not much built into nodejs itself - everything is in npm
 - Single threaded event loop - handles concurrency very well
 
-## [Node.js microservices in the cloud for (almost) free](http://webcache.googleusercontent.com/search?q=cache:lxhw7QPbqNUJ:ndcsydney.com/talk/undo-accept-awesome-node-js-microservices-in-the-cloud-for-almost-free/) *Gojko Adzic*
+## Node.js microservices in the cloud for (almost) free *Gojko Adzic*
 
 This was the first talk I went to on cloud functions, but it set the scene for several of the following talks.
 He was the first of many to use the buzzword *serverless* that kept recurring throughout the conference.
@@ -104,7 +104,7 @@ VMs are incentivized to keep the machine busy,
 whereas functions are incentivized to write small, isolated, loosely coupled modules -
 which is exactly the definition of a microservice.
 
-## [Akka.Net and the Actor Model](http://webcache.googleusercontent.com/search?q=cache:qjpbgUbo8KIJ:ndcsydney.com/talk/workshop-introduction-to-akka-net-and-the-actor-model/) *Aaron Stannard*
+## Akka.Net and the Actor Model *Aaron Stannard*
 
 - [Akka.Net](http://getakka.net/) is an implementation of the actor model
 - all communication is via immutable messages
@@ -119,7 +119,7 @@ I got the impression that Akka.Net is a low level design of microservices.
 It doesn't describe the deployment scenario.
 For a more managed implementation you could use [Azure Service Fabric](https://azure.microsoft.com/en-us/services/service-fabric/).
 
-## [NBench: Automated Performance Testing for .NET](http://webcache.googleusercontent.com/search?q=cache:gzgGW_AlefUJ:ndcsydney.com/talk/nbench-automated-performance-testing-for-net/) *Aaron Stannard*
+## NBench: Automated Performance Testing for .NET *Aaron Stannard*
 
 - performance is a feature
 - create a culture of measuring performance
@@ -128,7 +128,7 @@ For a more managed implementation you could use [Azure Service Fabric](https://a
 - failed assertion can fail CI build
 - two run modes: number of runs in a fixed time, or run a certain number of times
 
-## [Start taking advantage of functional programming](http://webcache.googleusercontent.com/search?q=cache:nGPWIyLqvTQJ:ndcsydney.com/talk/functional-programming-for-the-everyman/) *Daniel Chambers*
+## Start taking advantage of functional programming *Daniel Chambers*
 
 How to gradually start using functional programming features in the languages you already use.
 
@@ -142,7 +142,7 @@ _.first(...).skip()....etc
 
 The slides and examples are available [here](http://bit.ly/fp-for-everyman).
 
-## [Azure Machine Learning for the Developer](http://webcache.googleusercontent.com/search?q=cache:FrgwOAeFGoIJ:ndcsydney.com/talk/azure-machine-learning-for-the-developer/) *Peter Myers*
+## Azure Machine Learning for the Developer *Peter Myers*
 
 Machine learning was previously the domain of data scientists,
 but these are in short supply and very expensive,
@@ -171,7 +171,7 @@ Once you have a trained model, deploy it as a web service to use for prediction.
 **If prediction accuracy is better than random then it's worthwhile**,
 eg when predicting one of four categories, better than 25% accuracy is good.
 
-## [Functional Architecture](http://webcache.googleusercontent.com/search?q=cache:DgZyn78Rj14J:ndcsydney.com/talk/functional-architecture-the-pits-of-success/) *Mark Seemann*
+## Functional Architecture *Mark Seemann*
 
 Very good talk about coding best practices that need to be enforced in object-oriented programming
 but come naturally in functional programming.
@@ -185,7 +185,7 @@ Pure functions can be easily tested.
 A function can take another function as input, eg getting a value from a database -
 so the function is testable without having to, for example, mock a repository.
 
-## [Power BI for the Developer](http://webcache.googleusercontent.com/search?q=cache:sLs8-6PST-4J:ndcsydney.com/talk/power-bi-for-the-developer/) *Peter Myers*
+## Power BI for the Developer *Peter Myers*
 
 [Power BI](https://powerbi.microsoft.com/en-us/blog/power-bi-azure-ml/)
 makes a nice dashboard with nice data visualizations out of any data sets.
@@ -196,7 +196,7 @@ makes a nice dashboard with nice data visualizations out of any data sets.
 - stream analytics - eg take in a stream of data and report on average temperature from last 5 minutes
 - can publish dashboard publicly to web
 
-## [.Net Core](http://webcache.googleusercontent.com/search?q=cache:xyTj_8_kLLsJ:ndcsydney.com/talk/what-does-an-open-source-microsoft-web-platform-look-like/) *Scott Hanselmann*
+## .Net Core *Scott Hanselmann*
 
 The aim of
 [.Net Core](https://www.microsoft.com/net/core)
@@ -215,7 +215,7 @@ Things like **W**PF, **Win**Forms, etc will never be in Core.
 .Net Core got a bad press because of the re-organizations leading up to the 1.0 release,
 but that was due to re-organizations within Microsoft.
 
-## [Practical microservice security](http://webcache.googleusercontent.com/search?q=cache:oQZLdrWg29gJ:ndcsydney.com/talk/practical-microservice-security/) *Laura Bell*
+## Practical microservice security *Laura Bell*
 
 The talk included "microservice" in the title but I think that was just to be buzzword-friendly.
 It was about security in general.

@@ -54,3 +54,92 @@ If it is configured then it shows the history of deployments.
 
 ![Continuous Delivery](CD.png)
 
+## Xamarin Live Player
+
+You can develop Xamarin iOS apps in Visual Studio on Windows.
+If you attach an iOS device, eg an iPhone,
+then you can see a live preview while you're designing views,
+and quickly deploy to the device.
+
+## [CI/CD for Xamarin](https://mobile.azure.com/login)
+
+You can configure a CI/CD pipeline for iOS devices that will build, deploy and test on multiple Mac/iOS devices in the cloud.
+
+## Security Center / Advisor
+
+The portal can proactively alert you about many misconfigurations,
+including security, availability, performance, cost.
+If configured, it can tell you about possible SQL injection vulnerabilities.
+
+## Cosmos DB
+
+[Cosmos DB](https://azure.microsoft.com/en-us/services/cosmos-db/),
+formerly DocumentDb, is Microsoft's globally distributed, multi-API, NoSQL database.
+
+It has multiples SLA's - not just for availability, but also for performance, throughput, etc.
+
+It has multiple API's, which means you can address it as MongoDb, Table Storage, Gremlin (graph), and others.
+This means that you can, for example import the Gremlin module into Node to access it that way.
+The management interface is optimized for the chosen API.
+
+You can choose from several consistency models:
+- one write node, eventual consistency
+- session consistency
+- strong consistency
+
+Performance is provisioned at a per second level, but throttling is done on a one minute average.
+
+## Docker
+
+Right-click > add Docker support to projects in Visual Studio.
+Good support for debugging across projects in different containers.
+
+Docker CI/CD in preview.
+
+It's possible to deploy Docker containers to Service Fabric (as opposed to Container Service).
+
+## C# 7 multiple return types
+
+He didn't explicitly mention this, but I noticed it in one of the demos.
+
+```cs
+(string, string, string) MyCoolFunction() // tuple return type
+{
+    //...
+    return (firstValue, secondValue, thirdValue);
+}
+
+var (first, second, third) = MyCoolFunction(); //Implicitly Typed Variables
+```
+
+## Azure Functions
+
+You can debug Azure Functions locally in Visual Studio.
+In my experience this has been a pain point of Azure Functions,
+but he made it look easy.
+
+## Cognitive Services
+
+AI/ML.
+There are lots of built-in features that you can use and extend.
+He demonstrated the image recognition that he taught to recognize a dog and a cat.
+And extending the face recognition to recognize specific people.
+
+There is also sentiment detection, which he demoed to recognize the sentiment of a Twitter feed.
+He also mentioned using it to recognize sentiment of a call center
+(I guess you first need a speech-to-text library, but that's part of the same concept).
+
+## Managed disks
+
+In retrospect, hard disks as part of a storage account was a bad idea because you can't put them in availability sets.
+[Managed disks](https://azure.microsoft.com/en-us/services/managed-disks/)
+solves that problem.
+It's easy to migrate from the old disks to managed disks,
+although it'll require downtime within the VM availability set.
+
+## Just-In-Time Admin (coming soon)
+
+You can disable admin access for a VM.
+This will close ports (etc) for improved security (reduce the attack surface).
+It can be enabled for a limited time if you need it.
+

@@ -1,4 +1,4 @@
-# osmdroid basic architecture
+# osmdroid basic architecture (last updated 2015-06-17)
 
 ## Overview
 

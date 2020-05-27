@@ -28,6 +28,11 @@ C# notebooks. eg to generate sample data -
 autoscale is GA - can enable autoscale on existing database -
 coming soon : consumption / serverless plan.
 
+- [GitHub and Azure DevOps](https://mybuild.microsoft.com/sessions/8050f933-9bc7-4cbc-9d35-fb81bf172de8)  
+GitHub and Azure DevOps are run as a combined engineering team.  
+Shift left with security: find vulnerabilities earlier.  
+CodeQL code scan.
+
 - C++  
 I watched a part of a session that I can't find now
 where the guy was saying that they've modernized C++ and made it easy to make incremental improvements to code,

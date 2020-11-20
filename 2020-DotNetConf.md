@@ -15,7 +15,20 @@ TODO
 
 ## [Day One](https://channel9.msdn.com/Events/dotnetConf/2020?sort=status&direction=desc&d=1)
 
-### https://channel9.msdn.com/Events/dotnetConf/2020/Whats-New-in-C
+### [What’s New in C#?](https://channel9.msdn.com/Events/dotnetConf/2020/Whats-New-in-C)
+
+- top level program
+- `init` setter
+  - serializer still breaks "read-only-ness", ie can set `init` properties
+- `record`
+  - class with value but no methods
+  - nice `ToString` implementation
+  - value equality
+  - define properties in constructor
+  - can be deconstruced (tuples)
+  - probably immutable
+- `with` expression - create (shallow) copy and have an extra object initialiser
+- better pattern matching in switch statements
 
 ### https://channel9.msdn.com/Events/dotnetConf/2020/A-talk-for-trailblazers-Blazor-in-NET-5
 

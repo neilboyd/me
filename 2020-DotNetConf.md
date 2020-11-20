@@ -32,17 +32,28 @@ TODO
 
 ### https://channel9.msdn.com/Events/dotnetConf/2020/A-talk-for-trailblazers-Blazor-in-NET-5
 
-### https://channel9.msdn.com/Events/dotnetConf/2020/Porting-Projects-to-NET-5
+### [Porting Projects to .NET 5](https://channel9.msdn.com/Events/dotnetConf/2020/Porting-Projects-to-NET-5)
+
+- .Net 5 is not LTS - 6 will be
+- Xamarin not in 5 - will be in 6
+- everything they intend to bring from FF is now in .Net 5
+  - AddDomains will not be ported, but can use AssemblyLoadContext instead
+- .Net 5 replaces Core and Standard
+  - also have platform specific versions that add stuff
+  - cross platform libraries to support FF are still Standard 2.0
+  - Standard 2.1 to share with Core 3.0 and Xamarin
+- only reason to port is to innovate - Core 3.1 and FF will stay around for ever
+- nice tools to migrate - `ApiPort` and `try-convert`
 
 ### https://channel9.msdn.com/Events/dotnetConf/2020/Modern-Web-Development-with-Blazor--NET-5
 
 ### https://channel9.msdn.com/Events/dotnetConf/2020/Developing-and-Deploying-Microservices-with-Tye
 
-### https://channel9.msdn.com/Events/dotnetConf/2020/Developing-and-Deploying-Microservices-with-Tye
-
 ### https://channel9.msdn.com/Events/dotnetConf/2020/MLNET-in-the-Real-World
 
-### https://channel9.msdn.com/Events/dotnetConf/2020/Developer-Fun-with-Scott-Hanselman
+### [Developer Fun with Scott Hanselman](https://channel9.msdn.com/Events/dotnetConf/2020/Developer-Fun-with-Scott-Hanselman)
+
+I watched the first few minutes and it's just some fun - nothing new.
 
 ## [Day Two](https://channel9.msdn.com/Events/dotnetConf/2020?sort=status&direction=desc&d=2)
 

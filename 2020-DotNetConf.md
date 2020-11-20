@@ -53,7 +53,7 @@ TODO
 
 ### [Developer Fun with Scott Hanselman](https://channel9.msdn.com/Events/dotnetConf/2020/Developer-Fun-with-Scott-Hanselman)
 
-I watched the first few minutes and it's just some fun - nothing new.
+- I watched the first few minutes and it's just some fun - nothing new.
 
 ## [Day Two](https://channel9.msdn.com/Events/dotnetConf/2020?sort=status&direction=desc&d=2)
 
@@ -63,15 +63,24 @@ I watched the first few minutes and it's just some fun - nothing new.
 
 ### https://channel9.msdn.com/Events/dotnetConf/2020/Improve-Your-Productivity-with-Roslyn-Analyzers
 
-### https://channel9.msdn.com/Events/dotnetConf/2020/HTTP-API-Development-with-NET-Azure-and-OpenAPI-Paper-Cuts-Begone
+### [Accelerate .NET to Azure with GitHub Actions](https://channel9.msdn.com/Events/dotnetConf/2020/Accelerate-NET-to-Azure-with-GitHub-Actions)
 
-### https://channel9.msdn.com/Events/dotnetConf/2020/Accelerate-NET-to-Azure-with-GitHub-Actions
+- mostly just an intro with slides
+- Actions is still behind Azure DevOps so no urgent need to move
 
 ### https://channel9.msdn.com/Events/dotnetConf/2020/Introducing-the-New-and-Improved-Azure-SDK-for-NET
 
-### https://channel9.msdn.com/Events/dotnetConf/2020/Migrate--Modernize-ASPNET-Applications-with-Azure-App-Service-and-NET-5
+### [Setting Up Feature Flags with .NET](https://channel9.msdn.com/Events/dotnetConf/2020/S236)
 
-### https://channel9.msdn.com/Events/dotnetConf/2020/S236
+- using [Split](https://split.io/product/feature-flags/), not the .Net Core feature
+- kill switch
+- A/B testing
+- subscription management
+- canary release
+- different differentiators: user, device, location, etc
+- approval
+- demo wasn't very good, but maybe she just wasn't a good presenter
+- the product supports good best practises
 
 ### https://channel9.msdn.com/Events/dotnetConf/2020/Level-up-Your-DevOps-with-GitHub-Actions-and-Kubernetes
 

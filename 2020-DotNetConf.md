@@ -1,9 +1,7 @@
-# [.NET Conf 2020](https://channel9.msdn.com/Events/dotnetConf/2020)
+# .NET Conf 2020
 
-TODO
-
-- [ ] intro
-- [ ] update L6n site
+[.NET Conf 2020](https://channel9.msdn.com/Events/dotnetConf/2020)
+is an online conference, mostly about all the good new stuff in .Net 5.
 
 ## [KeyNote](https://channel9.msdn.com/Events/dotnetConf/2020/Keynote-Welcome-to-NET-5)
 

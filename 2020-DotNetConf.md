@@ -11,9 +11,7 @@ is an online conference, mostly about all the good new stuff in .Net 5.
 - Great Swagger (Open API) support
 - Project Tye to make K8s easier
 
-## [Day One](https://channel9.msdn.com/Events/dotnetConf/2020?sort=status&direction=desc&d=1)
-
-### [What’s New in C#?](https://channel9.msdn.com/Events/dotnetConf/2020/Whats-New-in-C)
+## [What’s New in C#?](https://channel9.msdn.com/Events/dotnetConf/2020/Whats-New-in-C)
 
 - top level program
 - `init` setter
@@ -28,9 +26,7 @@ is an online conference, mostly about all the good new stuff in .Net 5.
 - `with` expression - create (shallow) copy and have an extra object initialiser
 - better pattern matching in switch statements
 
-### https://channel9.msdn.com/Events/dotnetConf/2020/A-talk-for-trailblazers-Blazor-in-NET-5
-
-### [Porting Projects to .NET 5](https://channel9.msdn.com/Events/dotnetConf/2020/Porting-Projects-to-NET-5)
+## [Porting Projects to .NET 5](https://channel9.msdn.com/Events/dotnetConf/2020/Porting-Projects-to-NET-5)
 
 - .Net 5 is not LTS - 6 will be
 - Xamarin not in 5 - will be in 6
@@ -43,32 +39,16 @@ is an online conference, mostly about all the good new stuff in .Net 5.
 - only reason to port is to innovate - Core 3.1 and FF will stay around for ever
 - nice tools to migrate - `ApiPort` and `try-convert`
 
-### https://channel9.msdn.com/Events/dotnetConf/2020/Modern-Web-Development-with-Blazor--NET-5
-
-### https://channel9.msdn.com/Events/dotnetConf/2020/Developing-and-Deploying-Microservices-with-Tye
-
-### https://channel9.msdn.com/Events/dotnetConf/2020/MLNET-in-the-Real-World
-
-### [Developer Fun with Scott Hanselman](https://channel9.msdn.com/Events/dotnetConf/2020/Developer-Fun-with-Scott-Hanselman)
+## [Developer Fun with Scott Hanselman](https://channel9.msdn.com/Events/dotnetConf/2020/Developer-Fun-with-Scott-Hanselman)
 
 - I watched the first few minutes and it's just some fun - nothing new.
 
-## [Day Two](https://channel9.msdn.com/Events/dotnetConf/2020?sort=status&direction=desc&d=2)
-
-### https://channel9.msdn.com/Events/dotnetConf/2020/GitHub--Visual-Studio--NET
-
-### https://channel9.msdn.com/Events/dotnetConf/2020/Whats-New-in-Visual-Studio-2019-and-beyond
-
-### https://channel9.msdn.com/Events/dotnetConf/2020/Improve-Your-Productivity-with-Roslyn-Analyzers
-
-### [Accelerate .NET to Azure with GitHub Actions](https://channel9.msdn.com/Events/dotnetConf/2020/Accelerate-NET-to-Azure-with-GitHub-Actions)
+## [Accelerate .NET to Azure with GitHub Actions](https://channel9.msdn.com/Events/dotnetConf/2020/Accelerate-NET-to-Azure-with-GitHub-Actions)
 
 - mostly just an intro with slides
 - Actions is still behind Azure DevOps so no urgent need to move
 
-### https://channel9.msdn.com/Events/dotnetConf/2020/Introducing-the-New-and-Improved-Azure-SDK-for-NET
-
-### [Setting Up Feature Flags with .NET](https://channel9.msdn.com/Events/dotnetConf/2020/S236)
+## [Setting Up Feature Flags with .NET](https://channel9.msdn.com/Events/dotnetConf/2020/S236)
 
 - using [Split](https://split.io/product/feature-flags/), not the .Net Core feature
 - kill switch
@@ -81,15 +61,7 @@ is an online conference, mostly about all the good new stuff in .Net 5.
 - the product supports good best practises
 - start simple, eg an A/A test (yes really!)
 
-### https://channel9.msdn.com/Events/dotnetConf/2020/Level-up-Your-DevOps-with-GitHub-Actions-and-Kubernetes
-
-### https://channel9.msdn.com/Events/dotnetConf/2020/Blazor-Client-Side-vs-Server-Side-Hands-on-Development-and-Deployment
-
-### https://channel9.msdn.com/Events/dotnetConf/2020/Architecting-Cloud-Native-Application-in-Azure-using-NET-Core
-
-## [Day Three](https://channel9.msdn.com/Events/dotnetConf/2020?sort=status&direction=desc&d=3)
-
-### [Azure Management Superpowers with Pulumi](https://channel9.msdn.com/Events/dotnetConf/2020/Azure-Management-Superpowers-with-Pulumi)
+## [Azure Management Superpowers with Pulumi](https://channel9.msdn.com/Events/dotnetConf/2020/Azure-Management-Superpowers-with-Pulumi)
 
 - [Pulumi](https://www.pulumi.com/azure/) has full coverage of Azure and Kubernetes APIs, and .Net 5 and C# 9
 - multiple cloud providers
@@ -101,3 +73,17 @@ is an online conference, mostly about all the good new stuff in .Net 5.
   - has IDE support etc, and can also write unit tests etc
 - 100% Azure coverage - it's generated from the OpenApi spec
 - can convert an ARM template to code
+
+## More that look interesting but I didn't get round to watching (yet)
+
+- https://channel9.msdn.com/Events/dotnetConf/2020/A-talk-for-trailblazers-Blazor-in-NET-5
+- https://channel9.msdn.com/Events/dotnetConf/2020/Modern-Web-Development-with-Blazor--NET-5
+- https://channel9.msdn.com/Events/dotnetConf/2020/Developing-and-Deploying-Microservices-with-Tye
+- https://channel9.msdn.com/Events/dotnetConf/2020/MLNET-in-the-Real-World
+- https://channel9.msdn.com/Events/dotnetConf/2020/GitHub--Visual-Studio--NET
+- https://channel9.msdn.com/Events/dotnetConf/2020/Whats-New-in-Visual-Studio-2019-and-beyond
+- https://channel9.msdn.com/Events/dotnetConf/2020/Improve-Your-Productivity-with-Roslyn-Analyzers
+- https://channel9.msdn.com/Events/dotnetConf/2020/Introducing-the-New-and-Improved-Azure-SDK-for-NET
+- https://channel9.msdn.com/Events/dotnetConf/2020/Level-up-Your-DevOps-with-GitHub-Actions-and-Kubernetes
+- https://channel9.msdn.com/Events/dotnetConf/2020/Blazor-Client-Side-vs-Server-Side-Hands-on-Development-and-Deployment
+- https://channel9.msdn.com/Events/dotnetConf/2020/Architecting-Cloud-Native-Application-in-Azure-using-NET-Core

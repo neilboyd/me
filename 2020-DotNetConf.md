@@ -81,6 +81,7 @@ TODO
 - approval
 - demo wasn't very good, but maybe she just wasn't a good presenter
 - the product supports good best practises
+- start simple, eg an A/A test (yes really!)
 
 ### https://channel9.msdn.com/Events/dotnetConf/2020/Level-up-Your-DevOps-with-GitHub-Actions-and-Kubernetes
 
@@ -90,4 +91,15 @@ TODO
 
 ## [Day Three](https://channel9.msdn.com/Events/dotnetConf/2020?sort=status&direction=desc&d=3)
 
-### https://channel9.msdn.com/Events/dotnetConf/2020/Azure-Management-Superpowers-with-Pulumi
+### [Azure Management Superpowers with Pulumi](https://channel9.msdn.com/Events/dotnetConf/2020/Azure-Management-Superpowers-with-Pulumi)
+
+- [Pulumi](https://www.pulumi.com/azure/) has full coverage of Azure and Kubernetes APIs, and .Net 5 and C# 9
+- multiple cloud providers
+- infrastructure as code
+  - ARM templates
+  - yaml
+  - actual code
+- Pulumi is the last in that list
+  - has IDE support etc, and can also write unit tests etc
+- 100% Azure coverage - it's generated from the OpenApi spec
+- can convert an ARM template to code

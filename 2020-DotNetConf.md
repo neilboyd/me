@@ -3,6 +3,10 @@
 [.NET Conf 2020](https://channel9.msdn.com/Events/dotnetConf/2020)
 is an online conference, mostly about all the good new stuff in .Net 5.
 
+There are lots of good presentations,
+but I don't have time to watch them all.
+These are the ones that appealed to me most.
+
 ## [KeyNote](https://channel9.msdn.com/Events/dotnetConf/2020/Keynote-Welcome-to-NET-5)
 
 - Better Git integration in Visual Studio
@@ -91,13 +95,35 @@ is an online conference, mostly about all the good new stuff in .Net 5.
 - intellicode suggestion - suggest what to do next when it sees you're repeating edits, and suggest to do it in other locations
 - demo didn't go well - VS kept freezing
 
-## More that look interesting but I didn't get round to watching (yet)
+### [Improve Your Productivity with Roslyn Analyzers](https://channel9.msdn.com/Events/dotnetConf/2020/Improve-Your-Productivity-with-Roslyn-Analyzers)
 
-- https://channel9.msdn.com/Events/dotnetConf/2020/A-talk-for-trailblazers-Blazor-in-NET-5
-- https://channel9.msdn.com/Events/dotnetConf/2020/Modern-Web-Development-with-Blazor--NET-5
-- https://channel9.msdn.com/Events/dotnetConf/2020/MLNET-in-the-Real-World
-- https://channel9.msdn.com/Events/dotnetConf/2020/GitHub--Visual-Studio--NET
-- https://channel9.msdn.com/Events/dotnetConf/2020/Improve-Your-Productivity-with-Roslyn-Analyzers
-- https://channel9.msdn.com/Events/dotnetConf/2020/Introducing-the-New-and-Improved-Azure-SDK-for-NET
-- https://channel9.msdn.com/Events/dotnetConf/2020/Level-up-Your-DevOps-with-GitHub-Actions-and-Kubernetes
-- https://channel9.msdn.com/Events/dotnetConf/2020/Blazor-Client-Side-vs-Server-Side-Hands-on-Development-and-Deployment
+- Roslyn is the C# compiler with an open API surface that let's you plugin other technologies, one of which is code analysers
+- diagnostics, suggestions and code fixes
+- report violations: error, warning, suggestion, hidden
+- hidden is refactoring suggestions, eg extract method
+- style support for XML comments, also for `inheritdoc`
+- (new C# feature - default constructor when variable type is defined, eg `List<int> list = new()`)
+- show parameter names when pressing alt-f - or always if configured
+- Regex completion
+- DateTime format suggestions
+- best practises
+  - they've been disabled for a long time to avoid breaking stuff, but now they're enabling more
+  - project setting `AnalysisLevel` to revert to previous behavior, or use a later behavior
+- second half was about how to write a Roslyn analyser, which I'm not interested in
+
+### [Introducing the New and Improved Azure SDK for .NET](https://channel9.msdn.com/Events/dotnetConf/2020/Introducing-the-New-and-Improved-Azure-SDK-for-NET)
+
+- New team to create consistency in all the Azure SDKs
+- [idiomatic, consistent, approachable, diagnosable, dependable](https://aka.ms/azsdk/guide)
+- in depth description about how the SDK works internally
+  - not necessary to know for the simple use case
+  - but could be interesting for extending or diagnosing
+- pipeline is immutable, which means that a single client can be used by multiple threads
+
+### [Level-up Your DevOps with GitHub Actions and Kubernetes](https://channel9.msdn.com/Events/dotnetConf/2020/Level-up-Your-DevOps-with-GitHub-Actions-and-Kubernetes)
+
+- https://github.com/robrich/levelup-devops-github-actions-kubernetes
+- demo creating a project from scratch, dockerizing it (multi-stage, including using docker to build instead of local)
+- then deploy to k8s - copy-paste yaml because it's always the same
+- Github Actions - build container (tag with sha), push to registry, apply to k8s (including replacing params in k8s yaml)
+- flawless and complete demo

@@ -74,16 +74,30 @@ is an online conference, mostly about all the good new stuff in .Net 5.
 - 100% Azure coverage - it's generated from the OpenApi spec
 - can convert an ARM template to code
 
+### [Developing and Deploying Microservices with 'Tye'](https://channel9.msdn.com/Events/dotnetConf/2020/Developing-and-Deploying-Microservices-with-Tye)
+
+- it's supposed to simplify Kubernetes
+- but if you don't find Kubernetes too hard, then Tye is probably not useful for you
+- it's still an experiment
+  - useful for development cycle
+  - most people don't get as far as using it for deployment
+- the second half of the video was a demo, but they'd already lost me
+
+### [What’s New in Visual Studio 2019 and beyond](https://channel9.msdn.com/Events/dotnetConf/2020/Whats-New-in-Visual-Studio-2019-and-beyond)
+
+- themes - download a theme extension and select it - it'll do colors, etc
+- checkbox to open solution without loading projects
+- configure file nesting options, eg show different file types as if they were in different folders
+- intellicode suggestion - suggest what to do next when it sees you're repeating edits, and suggest to do it in other locations
+- demo didn't go well - VS kept freezing
+
 ## More that look interesting but I didn't get round to watching (yet)
 
 - https://channel9.msdn.com/Events/dotnetConf/2020/A-talk-for-trailblazers-Blazor-in-NET-5
 - https://channel9.msdn.com/Events/dotnetConf/2020/Modern-Web-Development-with-Blazor--NET-5
-- https://channel9.msdn.com/Events/dotnetConf/2020/Developing-and-Deploying-Microservices-with-Tye
 - https://channel9.msdn.com/Events/dotnetConf/2020/MLNET-in-the-Real-World
 - https://channel9.msdn.com/Events/dotnetConf/2020/GitHub--Visual-Studio--NET
-- https://channel9.msdn.com/Events/dotnetConf/2020/Whats-New-in-Visual-Studio-2019-and-beyond
 - https://channel9.msdn.com/Events/dotnetConf/2020/Improve-Your-Productivity-with-Roslyn-Analyzers
 - https://channel9.msdn.com/Events/dotnetConf/2020/Introducing-the-New-and-Improved-Azure-SDK-for-NET
 - https://channel9.msdn.com/Events/dotnetConf/2020/Level-up-Your-DevOps-with-GitHub-Actions-and-Kubernetes
 - https://channel9.msdn.com/Events/dotnetConf/2020/Blazor-Client-Side-vs-Server-Side-Hands-on-Development-and-Deployment
-- https://channel9.msdn.com/Events/dotnetConf/2020/Architecting-Cloud-Native-Application-in-Azure-using-NET-Core

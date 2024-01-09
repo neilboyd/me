@@ -4,7 +4,10 @@
 
 ### Day 1
 
-Apparently the workshop has been going for 10 years, but it's constantly updated and still very much relevant.
+Apparently the workshop has been going for 10 years, but it's constantly updated and still very much relevant.  
+Standard training is a 3-day course,
+but this is condensed into a 2-day workshop.
+He goes a bit quick sometimes.
 
 Browser talks to webapp, services. Services talk to each other.
 Assume zero trust, unlike 10 years ago when we trusted everything inside the firewall.
@@ -52,7 +55,8 @@ Defined in order, eg first static files, then HSTS, then authentication, then au
 
 [Auth middleware extension methods](https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-8.0)
 are badly named:
-- [`SignInAsync`](https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.authentication.authenticationhttpcontextextensions.signinasync?view=aspnetcore-8.0) - creates a session
+- [`SignInAsync`](https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.authentication.authenticationhttpcontextextensions.signinasync?view=aspnetcore-8.0) -
+   creates a session - provider creates a principal which is the parameter to this method
 - [`ChallengeAsync`](https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.authentication.authenticationhttpcontextextensions.challengeasync?view=aspnetcore-8.0) - initiates sign in
 - [`AuthenticateAsync`](https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.authentication.authenticationhttpcontextextensions.authenticateasync?view=aspnetcore-8.0) - queries if authenticated
 
@@ -96,7 +100,15 @@ Google handler writes directly to the cookie handler that we define first in the
 - convert Google identity to our identity
 - see the lab
 
-**OpenId Connect** "using IdentityServer as an example".
+Scheme - eg Google, OpenId Connect, cookie, etc - is a configuration plus a handler.
+
+**OpenId Connect** (oidc) "using IdentityServer as an example".
+
+Terms:
+- STS [Security Token Service](https://en.wikipedia.org/wiki/Security_token_service)
+- [Identity Provider](https://en.wikipedia.org/wiki/Identity_provider) (IDP)
+- Identity Server
+- I think these are all basically the same thing BICBW
 
 Endpoints:
 - discovery - `/.well-known/openid-configuration` - static json
@@ -126,6 +138,99 @@ IdentityServer lets you fully customize.
 IdentityServer is just a place to put all the code we've been writing up to now
 so that it can be shared across multiple clients.
 The client code to use it is very simple - just configuration in `Startup`.  
-One IdentityServer that multiple clients use - SSO.
+One IdentityServer that multiple clients use -
+[SSO](https://www.identityserver.com/products/customized-single-sign-on-solution).
 
 **Tip:** always use https, even locally, because it's handled differently to http.
+
+### Day 2
+
+Use multiple cookie schemes for intermediate sign in steps.
+Each scheme must be complete when signed in to it.  
+A reason why you're often asked to enter a code that's sent in an email,
+rather than clicking a link in the email,
+may be to make sure user stays in the same browser (session).
+
+oidc builds on oauth2.
+
+`response_type=token`: implicit flow.
+
+`scope`: requested claims - no guarantee that they'll be returned.
+But the provider should at least know about them.
+
+`[Authorize]` triggers challenge.
+
+**SingleSignOut**
+- cleanup local session
+- cleanup at STS
+  - notify other clients in same session
+  - hidden iframe on STS client signed out page - one iframe for each client
+  - in Duende IdentityServer the list of clients is in `Config.Clients`
+
+NB: don't sign out on get (`OnGet`) request - unless we add XSS protection manually.
+
+`LoggedOut` page
+- can skip the `Logout` prompt
+- send token as XSS protection
+
+`Logout` page could maybe be an iframe on client - Anders couldn't think of any reason why not.
+
+**Federation Gateway**  
+Multiple clients talk to FG.
+FG manages auth with multiple identity providers - AAD, Google, etc.
+
+Can have many providers and user has to choose.
+In order to reduce the list,
+do a customer-specific start page and filter based on where you came from.
+Or first ask for email,
+and then only show list of relevant providers on next screen.  
+This is called **home realm discovery**.  
+Client sets `acr_values` in request - how it does that is up to client.
+
+Server app (cf browser app with user) sends `client_secret` (among other things) in request to STS.
+Gets an access token back.  
+Access token is used to call API.  
+Access token is usually transmitted in `Authorization` header as `Bearer` token.  
+No signin/signout/challenge because we just use the token.  
+Client shouldn't need to inspect the token.
+Properties from the token that are needed for validation
+are also returned in the response along with the token - scope, expiry.  
+API should validate token, eg scope, client id.
+
+Scope is a set of information about resource.
+
+Only introduce scopes when you need them - start with just one (for each app).
+
+User-centric - token on behalf of user.
+Delegation/impersonation.
+Mainly skipped this part of the course,
+but mentioned a bit in the discussion - doesn't seem particularly difficult.
+
+Access token cf id token:
+- access token lifetime is finite - eg 15 minutes
+- request a refresh token - scope `offline_access`
+- refresh token used to request new access token
+- refresh tokens can also be stolen, but they can be revoked,
+  unlike access tokens that are valid until they expire
+- refresh tokens typically have a very long expiry, eg years
+
+Code flow
+- `token_type=code`
+- has issue - authorization code inspection
+- mitigated with [PKCE](https://pragmaticwebsecurity.com/articles/oauthoidc/from-implicit-to-pkce.html)
+  - something like a nonce
+  - `code_challenge=hash(code_verifier)`
+  - `code_verifier` is used when exchanging code for access token
+  - ASP.NET Core does this by default
+  - full name: "code flow with PKCE"
+
+OAuth2.1 - the next version - will only have code flow with PKCE - the others are deprecated.
+
+Implicit flow doesn't allow refresh tokens -
+use hidden iframe to refresh access token instead
+
+BFF - backend for frontend:  
+Client only talks to one backend
+
+Native apps can open broswer for SSO so that user can trust it.
+Return URI is an app-specific URI that goes back to app.

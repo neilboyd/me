@@ -1,6 +1,6 @@
 # [NDC Security](https://ndc-security.com/) - Oslo 8-11 January 2024
 
-## Workshop: [Identity & Access Control for modern Applications and APIs using ASP.NET Core 8](https://ndc-security.com/workshops/identity-and-access-control-for-modern-applications-anders-abel/3cbf535885dc) *Ander Abel*
+## Workshop: [Identity & Access Control for modern Applications and APIs using ASP.NET Core 8](https://ndc-security.com/workshops/identity-and-access-control-for-modern-applications-anders-abel/3cbf535885dc) *Anders Abel*
 
 ### Day 1
 
@@ -234,3 +234,252 @@ Client only talks to one backend
 
 Native apps can open broswer for SSO so that user can trust it.
 Return URI is an app-specific URI that goes back to app.
+
+## Day 3
+
+### [Keynote: How I Met Your Data](https://ndc-security.com/agenda/opening-keynote-0soy/0k71y3zuhz9) *Troy Hunt*
+
+I arrived early to secure a good seat
+([Boom! Boom!](https://en.wikipedia.org/wiki/Basil_Brush))
+
+![NDC welcome](resources/ndc-security-welcome.jpg)
+
+There were surprisingly few people - maybe 200 -
+although Troy said this was the biggest NDC Security ever with 350 attendees.
+
+Encrypted data is safe unless the key is compromised.
+
+[politie.nl](https://politie.nl/checkyourhack)
+have a service similar to
+[HaveIBeenPwned](https://haveibeenpwned.com/).
+
+OTP in
+[1Password](https://1password.com/)
+is okay for the less critical sites.
+
+![NDC Troy](resources/ndc-security-troy.jpg)
+
+### [52 minutes from initial access to ransomware - is your defensive team ready?](https://ndc-security.com/agenda/52-mins-from-initial-access-to-ransomware-is-your-defensive-team-ready/0xynjm4t1kv) *Maarten Goet*
+
+He's from the Netherlands - MVP and Regional Director.
+
+HumOR - human operated ransomware:
+- 2023 - up 250% (since 2022?)
+- 70% are organizations with < 500 employees
+- 80% are from unmanaged devices
+
+Threat actors:
+- individual teenagers
+- financially motivated - ransomware as a service
+- nation states
+
+2010 - target individuals - opportunistic  
+now
+- target entire organizations
+- more targetted
+- double extortion
+  - data exfiltration
+  - encryption
+
+In The Netherlands, 41% pay the ransom.
+
+[ft.com](https://ig.ft.com/ransomware-game/)
+has a ransomware negotiation simulator.
+
+Ransomware as a service:
+- 2500 - initial access
+- 60 - ? (check slide deck)
+- 20 - ?
+- 1 - ransomware event
+
+Mitre Att&ack - see slides - stages.
+
+47 minutes average from initial access to full encryption.
+
+Identity attack.
+
+Microsoft Defender for Cloud
+- can see attack vector, eg a server with RDP open can access something
+- and XDR
+- extend with Azure Sentinel
+
+Microsoft
+- "Defend at Machine Speed"
+- because human can't beat 47 minutes
+- EDR - automatic attack disruption
+
+Microsoft Defender Deception
+- honeypot
+- released soon
+
+I asked him about the risk of local admin -
+he said that wasn't really a problem -
+need to look at the big picture and make sure it can't do damage on the network.
+
+### [The Future of Cookies](https://ndc-security.com/agenda/the-future-of-cookies-041k/858a3e38caa2) *Anders Abel*
+
+`SameSite=Strict` - don't send in iframe  
+`SameSite=Lax` - `GET` only - not `POST` or iframe  
+`HttpOnly` - not accessible to javascript
+
+Same site - domain - subdomain can be different.
+Subdomain defined by
+[public suffix list](https://publicsuffix.org/).
+
+There's no way to query properties of cookie:
+- eg evil subdomain could set a cookie for a domain
+- other domain doesn't know that evil set it
+- mitigigate by using domain in cookie name
+
+oidc spec says to use iframe (to refresh token?)
+- so when browers prevent ad tracking, they also broke oidc iframe
+- use bac-channel logout instead
+- Safari uses AI to block - so unreliable/unrepeatable
+- logout of IdentityServer will fail - should check success
+- Firefox has a better solution
+
+Chrome makes money from ads, so has mixed interests.
+More flexible - can enable/disable.
+
+Cross-site cookies are problematic and will become more so.
+
+![1st party cookies](resources/ndc-security-anders.jpg)
+
+### [PAR: Securing the OAuth and OpenID Connect Front-Channel](https://ndc-security.com/agenda/par-securing-the-oauth-and-openid-connect-front-channel/6c50dd558eb3) *Dominick Baier*
+
+I changed my mind about going to this talk at the last minute,
+mainly because the previous talk said that front channel is dead,
+and went to this instead:
+
+### [Implicit and Mutation-Based Serialization Vulnerabilities in .NET](https://ndc-security.com/agenda/second-breakfast-implicit-and-mutation-based-serialization-vulnerabilities-in-net-09xa/06cw2pnysiq) *Jonathan Birch*
+
+Mutation-based.
+
+Don't do `Type.GetType(string)`.
+
+Polymorphic serializers are bad - self-describing data.
+
+Exploit - hack a type that has side-effects, eg:
+- `AssemblyInstaller`
+- `ObjectDataProvider`
+
+Deserialize json with a type property, eg
+`{"$type": "..."}`
+
+Read/write object - db, cache, etc.
+
+`Deserialize<T>()` - `T` sometimes doesn't matter to deserializer - it's just a cast afterwards.  
+But even when it does matter, can also have an inner type.
+
+Mutation:
+- write a `Dictionary`
+- when deserialized uses type property
+
+Exploited when deserialized - what happens next is irrelevant.
+
+Attacker needs to be able to control, eg one key of dictionary.  
+(sample table column names?)
+
+Serialization binder
+- control allowed types
+- but can be bypassed, especially with generics, and nested types
+- don't use them - it's too hard to do it right.
+
+BinaryFormatter won't serialize boxed value types assigned to an interface.
+The only interfaces that allow this are:
+- `IConvertible`
+- `IComparable`
+- `IFormattable`
+
+These are not common types, but can work around with generics again.
+
+These vulnerablities are not fixed - for various reasons.
+
+`System.Text.Json.JsonSerializer` is the only good one.
+
+Most NoSQL engines are vulnerable.
+
+He mostly talked about .Net FF - he had a hard time finding some for .Net Core.
+
+### [Optimizing Cloud Detection & Response With Security Chaos Engineering](https://ndc-security.com/agenda/optimizing-cloud-detection-and-response-with-security-chaos-engineering-0cjg/0s36tfo28ih) *Kennedy Torkura*
+
+Talk was largely based on the
+[Security Chaos Engineering (SCE) mind map](https://www.mitigant.io/blog/security-chaos-engineering-101-the-mind-map-feedback-loop).
+
+Chaos Monkey was introduced by Netflix.
+
+Security Chaos Engineering:
+- cyber security
+- cyber resilience
+
+Why:
+- detect blindspots
+- overcome security theatre
+
+Practise ransomware scenario.
+
+It will test the monitoring - SIEM etc - so if we don't have them it's a bit pointless.
+
+Example - AKS security compromised - leads to AWS S3 bucket ransomware.
+
+EDR -> NDR -> XDR -> CDR
+
+**[Mitre Att&ck matrix](https://attack.mitre.org/)**.
+
+[Mitigant tool](https://www.mitigant.io/) can, eg emulate AndroxGhost malware attack.
+DataDog only gives a low severity alert.
+
+They have a set of attacks that I can try.
+Check what they have for Azure.
+
+Starts with a compromised account
+- you might say that makes the test a bit meaningless
+- but that is real scenario
+  - see previous talk
+  - 80% of attacks start with compromised identity
+
+They have a tab "evidence" - will be less if we have less monitoring.
+
+This assumes hackers are in, and then what will happen next?
+
+Could run continuously, but most don't because the human element is also important.
+
+Add chaos testing to my list of concerns.
+
+### [Purple is the New Black: Modern Approaches to Application Security](https://ndc-security.com/agenda/purple-is-the-new-black-modern-approaches-to-application-security/73db1a6df599) *Tanya Janca*
+
+Purple team - helping red team and blue team collaborate.
+
+Red team - hackers - very popular (eg lots of movies).  
+Blue team - less sexy - eg incident response.
+
+Zero trust is the opposite of human nature.  
+Assume breach.
+
+**Classify all the data** - so if it's breached we know how bad it is.
+
+Talk was aimed at security professionals - not developers.
+
+She mentioned "security as code" and I asked her what she meant by that.
+I think she explained that it meant,
+eg the pipeline can add security headers when it sees it's missing,
+but later I think I misunderstood and that's not what she meant.
+
+### [Asymmetric Encryption: A Deep Dive](https://ndc-security.com/agenda/asymmetric-encryption-a-deep-dive/5014163b148e) *Eli Holderness*
+
+RSA was the first asymetrics scheme in 1977.
+
+She explained it in a clear way, but I lost it after that.
+But it was still an entertaining talk.
+
+Elliptic curves replaced RSA for a couple of decades.
+
+Shor's algorithm solve the difficult problems that they rely on.
+
+Quantum computers - harder problems.
+
+Encrypt now for schemes that quantum computers can solve in the future -
+traffic could be stored and decrypted later -
+[Dilithium/Kyber](https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html).
+
+## Day 4

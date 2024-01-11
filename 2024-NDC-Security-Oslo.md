@@ -229,8 +229,7 @@ OAuth2.1 - the next version - will only have code flow with PKCE - the others ar
 Implicit flow doesn't allow refresh tokens -
 use hidden iframe to refresh access token instead
 
-BFF - backend for frontend:  
-Client only talks to one backend
+BFF - backend for frontend - client only talks to one backend
 
 Native apps can open broswer for SSO so that user can trust it.
 Return URI is an app-specific URI that goes back to app.
@@ -251,7 +250,8 @@ Encrypted data is safe unless the key is compromised.
 
 [politie.nl](https://politie.nl/checkyourhack)
 have a service similar to
-[HaveIBeenPwned](https://haveibeenpwned.com/).
+[HaveIBeenPwned](https://haveibeenpwned.com/),
+but for a very limited dataset.
 
 OTP in
 [1Password](https://1password.com/)
@@ -273,8 +273,11 @@ Threat actors:
 - financially motivated - ransomware as a service
 - nation states
 
-2010 - target individuals - opportunistic  
-now
+2010:
+- target individuals
+- opportunistic
+
+now:
 - target entire organizations
 - more targetted
 - double extortion
@@ -329,7 +332,7 @@ Subdomain defined by
 There's no way to query properties of cookie:
 - eg evil subdomain could set a cookie for a domain
 - other domain doesn't know that evil set it
-- mitigigate by using domain in cookie name
+- mitigate by using domain in cookie name
 
 oidc spec says to use iframe (to refresh token?)
 - so when browers prevent ad tracking, they also broke oidc iframe
@@ -467,7 +470,8 @@ but later I think I misunderstood and that's not what she meant.
 
 ### [Asymmetric Encryption: A Deep Dive](https://ndc-security.com/agenda/asymmetric-encryption-a-deep-dive/5014163b148e) *Eli Holderness*
 
-RSA was the first asymetrics scheme in 1977.
+[RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
+was the first asymetrics scheme in 1977.
 
 She explained it in a clear way, but I lost it after that.
 But it was still an entertaining talk.
@@ -483,3 +487,231 @@ traffic could be stored and decrypted later -
 [Dilithium/Kyber](https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html).
 
 ## Day 4
+
+### [Unlocking The Secrets Of TLS](https://ndc-security.com/agenda/unlocking-the-secrets-of-tls/0r79nspzqh7) *Scott Helme*
+
+RSA is asymetric - only used for exchanging symetric key - because it's expensive.
+
+1994
+- https invented
+- server sends public key
+- client encrypts with it
+- negotiate/exchange key
+
+Snowden - 2013:
+- NSA encrypts all traffic and stores it - PRISM
+- they forced his email provider to reveal his private key
+- and then they can decrypt all the traffic he sent in the past
+
+Heartbleed - 2014:
+- leaked private key from server
+
+This is a flaw in RSA key exchange.  
+[Diffie-Hellman key exchange](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)
+was invented in 1977, but not used until after heartbleed.  
+DHKX, or DHEKX - E=ephemeral - new key for each session.
+So in case one session is cracked, impact is limited.
+
+Forward Secrecy - 2008:
+- problem/solution was theoretical, but no-one saw a reason to use it until Snowde
+- mandatory in TLS 1.3
+- reduces risk (impact?) of losing private key
+- private key only used for establishing forwarding secrecy - not whole exchange
+
+### [Reviewing NuGet Packages security easily using OpenSSF Scorecard](https://ndc-security.com/agenda/assessing-nuget-packages-more-easily-with-security-scorecards-0x8x/01l9zdcmcx1) *Niels Tanis*
+
+Another [Dutch speaker](https://github.com/nielstanis/NDCSecurity2024).
+
+Average code base is 20% yours, 80% other people's.
+
+Veracode publishes
+[State of Software Security](https://www.veracode.com/state-of-software-security-report)
+report annually.
+
+79% of third party packages are never updated.
+
+All packages have same access rights as the app they're in.
+
+`dotnet listpackage --vulnerable`: direct dependencies.  
+`dotnet listpackage --vulnerable --include-transitive`: also transient dependencies.  
+dotnet 8 restore does this by default.
+
+OpenSSF scorecard - give open source projects a score based on
+[various criteria](https://securityscorecards.dev/#the-checks):
+- code vulnerabilities
+- maintenance
+- etc
+
+`RestorePackagesWithLockFile` option in MSBuild will create a `package.lock.json` file.
+
+Build provenance - info about environment used for the build - packaged in the package.
+
+[deps.dev](https://deps.dev/) is a similar service - from Google
+- includes OpenSSF scorecard
+- has an API
+
+OpenSSF is part of Linux Foundation.
+
+[SharpFuzz](https://github.com/Metalnem/sharpfuzz) - fuzz input.
+
+[Microsoft Application Inspector](https://www.microsoft.com/en-us/security/blog/2020/01/16/introducing-microsoft-application-inspector/)
+- analyzes to see what kind of application it is
+- eg, has crytography, API, cloud, has auth, etc
+
+**Tip:** use OpenSSF to get score of our repos,
+and see the worst dependencies and see if we can remove/update them.
+
+### [The Past, Present, and Future of Cross-Site/Cross-Origin Request Forgery](https://ndc-security.com/agenda/the-past-present-and-future-of-cross-sitecross-origin-request-forgery-0yyc/0o14vrn2ffp) *Philippe De Ryck*
+
+CSRF has always been a problem - recognised around the year 2000.
+
+Simple mitigation - send secret in cookie that's also validated:
+- synchronizer tokens
+- needs to be done explicitly by dev - easy to forget
+
+SameSite cookies:
+- site = TLD + 1
+- Chrome made same site the default behaviour - unless you specify `none`
+- `lax` is a good choice for most apps
+- set it explicitly - so other browsers will do the same as Chrome
+
+[BFF](https://learn.microsoft.com/en-us/azure/architecture/patterns/backends-for-frontends)
+uses cookies to talk to API.
+
+It's possible to post form data that looks like json:
+- for iframe/js attack
+- name is first part of json
+- value is second part
+
+Cross-origin but same site - TLD + 2
+
+Cross-**origin** request forgery:
+- why would you give attacker control over subdomains?
+- dangling CNAMEs
+- a multi-tenant app might have a subdomain per tenant
+
+CORS => preflight (`OPTIONS` request).
+
+js `no-cors` mode = "2008 mode".
+
+API should require custom header:
+- `no-cors` client can't send it
+- and enforce (validate) content-type
+
+[Duence BFF library](https://duendesoftware.com/products/bff) does all this.
+
+![CSRF flowchart](resources/ndc-security-csrf-flowchart.jpg)
+
+### [Social engineering pentesting. - How it is done, and what you should think about](https://ndc-security.com/agenda/social-engineering-pentesting-how-it-is-done-and-what-you-should-think-about-0juu/0snwepno5wg) *Ragnhild "Bridget" Sageng*
+
+Technique used to get a person to perform action or disclose information.
+
+Phishing test - very simple example.
+
+There's an ethical responsibility.
+
+OSINT:
+- information on web - about people or companies
+- social media
+- DNS, certs, etc
+- Google Maps (history)
+
+Phishing - email.  
+Vishing - voice phishing - eg phone call.  
+Smishing - SMS phishing.  
+Quishing - QR code phishing.
+
+Zero Trust doesn't work with humans.
+Trust but Verify instead.
+
+Security culture.
+Awareness.
+
+A test done poorly can have negative consequences.
+Even phishing tests can cause hostility
+
+Report:
+- try to stay anonymous
+- consequences
+
+The failure of an individual is not the individual's fault - it's a system failure.
+
+Debrief is important:
+- see how it affected victims
+- explain that it's not their fault
+
+Culture:
+- what's learned is easily forgotten
+- should be continuous training
+
+Practise - eg:
+- say that Fred will be coming for a test sometime in the next 3 months
+- have someone come with a T-shirt with "Fred" in big letters on the front
+- gives people confidence to confront suspicious strangers
+
+### [No Size Fits All: Empowering Engineers with Custom Application Security tests](https://ndc-security.com/agenda/no-size-fits-all-empowering-engineers-with-custom-application-security-tests-0mgr/09szzp7feis) *Michal Kamensky*
+
+Generic SAST/DAST tools can find generic vulnerabilities. There are lots of such tools.
+
+App specific mitigations are not recognised by generic tools,
+and so we'll get used to ignoring the warnings.
+
+Security decorators
+- input validation
+- challenge - check decorator is applied everywhere it should be
+- solution - SAST rules
+- the demo used [SemGrep](https://semgrep.dev/products/semgrep-code/) SAST
+
+Rules - check we're not calling vulnerable methods in libraries.
+
+DAST
+- demo used [Nuclei](https://github.com/projectdiscovery/nuclei)
+- also has rules
+- will do fuzzing
+
+Can run SemGrep in the pipeline - not free.
+
+### [Passwords are Dead, Long live Passkeys!](https://ndc-security.com/agenda/passwords-are-dead-long-live-passkeys-09cu/09kh8w0kjwe) *Stephen Rees-Carter*
+
+Problems with passwords:
+- humans are the weakness
+- gullible - will tell attacker if he asks the right way
+
+MFA is technical solution.
+
+Passkeys use existing technologies in a user-friendly, non-technical solution.
+
+[passkeys.io](https://passkeys.io/) has a demo.
+
+Passkey is linked to device
+- Windows Hello is disabled by Kantar :(
+
+Use passkey on phone:
+- create new
+- can have as many passkeys as you like
+- connect with Bluetooth
+
+Passkey is resistent to phishing - there's nothing to steal (on client).
+
+Passkeys is still optional (like biometrics)
+- because it's not supported everywhere
+- so there's still a username/password fallback
+
+[passkeys.directory](https://passkeys.directory/) - list of sites that support passkeys.
+
+[passkeys.dev](https://passkeys.dev/) - how to implement front end code.
+
+[webauthn.me](https://webauthn.me/)
+- demo
+- webauthn is the protocol
+- passkeys is a layer on top
+  - user-friendly
+  - sync
+  - etc
+
+Public key on client (sign in flow)
+- app sends challenge
+- signature flow
+- validate signature in app
+
+![Passkeys](resources/ndc-security-passkeys.jpg)

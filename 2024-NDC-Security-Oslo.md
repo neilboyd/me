@@ -1,4 +1,13 @@
-# [NDC Security](https://ndc-security.com/) - Oslo 8-11 January 2024
+# [NDC Security 2024](https://ndc-security.com/)
+
+NDC Security is a 4-day conference in Oslo in January with 2 days of workshops and 2 days of talks.
+
+Do a summary up here.
+
+All the rest is in a collapsible section.
+
+<details>
+<summary>Expand for all my notes</summary>
 
 ## Workshop: [Identity & Access Control for modern Applications and APIs using ASP.NET Core 8](https://ndc-security.com/workshops/identity-and-access-control-for-modern-applications-anders-abel/3cbf535885dc) *Anders Abel*
 
@@ -715,3 +724,5 @@ Public key on client (sign in flow)
 - validate signature in app
 
 ![Passkeys](resources/ndc-security-passkeys.jpg)
+
+</details>

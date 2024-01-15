@@ -2,12 +2,49 @@
 
 NDC Security is a 4-day conference in Oslo in January with 2 days of workshops and 2 days of talks.
 
-Do a summary up here.
+Here are my main takeaways from the workshop (Identity and Access Control):
+- identity should be immutable, unique, and never re-used (eg don't use email address)
+- .NET 1.0 was originally based on username and roles, but since 4.5 it's based on claims
+- always validate `ReturnUrl` before redirecting in order to prevent open redirection
+- there are a defined list of validation steps that clients should perform on identity tokens
+- Data Protection API in ASP.NET Core manages the cookie keys and encryption
+- it's important to implement Single Sign **Out** properly to prevent unexpected behaviour
+- IdentityServer (or any other security token service) contains all the code to manage auth -
+  so that it doesn't need to be duplicated in every client and the client code is simple
+- implicit flow doesn't allow refresh tokens - refreshes with a hidden iframe instead
+- code flow has some issues that are mitigated with PKCE (which acts like a nonce to prevent XSS)
+- code flow with PKCE is the only flow that will be supported in OAuth2.1
+- to avoid issues with cross-site cookies and iframe, use BFF (backend for frontend)
 
-All the rest is in a collapsible section.
+Here are my main takeaways from the talks:
+- ransomware is becoming more prolific and effective
+- cookie handling in the browsers are becoming stricter in order to block ad tracking,
+  which also makes them harder and less predictable to use for cross-site auth (SSO) -
+  BFF is a good solution to that problem
+- serialization attacks are possible in most json serializers if the attacker can control the data -
+  most NoSQL engines are vulnerable (including Redis)
+- use security chaos engineering to simulate security attacks and test and practise incident response
+- all data should be classified, so that if it's breached we know how bad it is
+- asymmetric encryption relies on solving difficult problems, but problems that are hard now may not be in the future
+- forward secrecy in TLS 1.3 ensures that even if the private key is compromised,
+  past traffic can't be decrypted
+- average code base is 80% third party libraries, and 80% of those are never updated
+- third party libraries have the same access rights as the app they're in
+- "site" is defined as TLD + 1, "origin" is defined as TLD + 2.
+  The definition of TLD and the behaviour of browsers with respect to cross-site and cross-origin cookies is constantly changing.
+  Again, BFF is the solution
+- zero trust doesn't work with humans -
+  security culture should teach "trust but verify" instead
+- passkeys are a user-friendly, non-technical solution to the problems of passwords
+  (unfortunately Kantar prevents them from working on their managed devices, eg my laptop)
+
+Every single session I went to was interesting and informative.
+The list above is one bullet point per session.
+For all of my notes and links, expand the collapsible section below,
+but be warned, they're not in a very comprehensible form.
 
 <details>
-<summary>Expand for all my notes</summary>
+<summary>Expand for my notes</summary>
 
 ## Workshop: [Identity & Access Control for modern Applications and APIs using ASP.NET Core 8](https://ndc-security.com/workshops/identity-and-access-control-for-modern-applications-anders-abel/3cbf535885dc) *Anders Abel*
 
@@ -147,8 +184,7 @@ IdentityServer lets you fully customize.
 IdentityServer is just a place to put all the code we've been writing up to now
 so that it can be shared across multiple clients.
 The client code to use it is very simple - just configuration in `Startup`.  
-One IdentityServer that multiple clients use -
-[SSO](https://www.identityserver.com/products/customized-single-sign-on-solution).
+One IdentityServer that multiple clients use - SSO.
 
 **Tip:** always use https, even locally, because it's handled differently to http.
 
@@ -252,8 +288,11 @@ I arrived early to secure a good seat
 
 ![NDC welcome](resources/ndc-security-welcome.jpg)
 
-There were surprisingly few people - maybe 200 -
+There were surprisingly few people - I guessed 200 -
 although Troy said this was the biggest NDC Security ever with 350 attendees.
+
+The keynote was some stories from 10 years of running
+[HaveIBeenPwned](https://haveibeenpwned.com/).
 
 Encrypted data is safe unless the key is compromised.
 
@@ -389,8 +428,7 @@ Mutation:
 
 Exploited when deserialized - what happens next is irrelevant.
 
-Attacker needs to be able to control, eg one key of dictionary.  
-(sample table column names?)
+Attacker needs to be able to control, eg one key of dictionary.
 
 Serialization binder
 - control allowed types
@@ -526,6 +564,7 @@ Forward Secrecy - 2008:
 - mandatory in TLS 1.3
 - reduces risk (impact?) of losing private key
 - private key only used for establishing forwarding secrecy - not whole exchange
+- ensure that even if private key is compromised, past traffic can't be decrypted
 
 ### [Reviewing NuGet Packages security easily using OpenSSF Scorecard](https://ndc-security.com/agenda/assessing-nuget-packages-more-easily-with-security-scorecards-0x8x/01l9zdcmcx1) *Niels Tanis*
 

@@ -10,7 +10,7 @@ Here are my main takeaways from the workshop (Identity and Access Control):
 - Data Protection API in ASP.NET Core manages the cookie keys and encryption
 - it's important to implement Single Sign **Out** properly to prevent unexpected behaviour
 - IdentityServer (or any other security token service) contains all the code to manage auth -
-  so that it doesn't need to be duplicated in every client and the client code is simple
+  so that it doesn't need to be duplicated in every client, and the client code is simple
 - implicit flow doesn't allow refresh tokens - refreshes with a hidden iframe instead
 - code flow has some issues that are mitigated with PKCE (which acts like a nonce to prevent XSS)
 - code flow with PKCE is the only flow that will be supported in OAuth2.1
@@ -385,7 +385,7 @@ There's no way to query properties of cookie:
 
 oidc spec says to use iframe (to refresh token?)
 - so when browers prevent ad tracking, they also broke oidc iframe
-- use bac-channel logout instead
+- use back-channel logout instead
 - Safari uses AI to block - so unreliable/unrepeatable
 - logout of IdentityServer will fail - should check success
 - Firefox has a better solution

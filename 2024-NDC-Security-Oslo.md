@@ -45,6 +45,7 @@ but be warned, they're not in a very comprehensible form.
 
 <details>
 <summary>Expand for my notes</summary>
+<br />
 
 ## Workshop: [Identity & Access Control for modern Applications and APIs using ASP.NET Core 8](https://ndc-security.com/workshops/identity-and-access-control-for-modern-applications-anders-abel/3cbf535885dc) *Anders Abel*
 

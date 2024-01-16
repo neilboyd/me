@@ -36,7 +36,7 @@ Here are my main takeaways from the talks:
 - zero trust doesn't work with humans -
   security culture should teach "trust but verify" instead
 - passkeys are a user-friendly, non-technical solution to the problems of passwords
-  (unfortunately Kantar prevents them from working on their managed devices, eg my laptop)
+  (unfortunately it is disabled on devices managed by Kantar, eg my laptop)
 
 Every single session I went to was interesting and informative.
 The list above is one bullet point per session.

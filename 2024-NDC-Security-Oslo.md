@@ -367,6 +367,7 @@ Microsoft Defender Deception
 I asked him about the risk of local admin -
 he said that wasn't really a problem -
 need to look at the big picture and make sure it can't do damage on the network.
+I guess that ties in with assume breach.
 
 ### [The Future of Cookies](https://ndc-security.com/agenda/the-future-of-cookies-041k/858a3e38caa2) *Anders Abel*
 

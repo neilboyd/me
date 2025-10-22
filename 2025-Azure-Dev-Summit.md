@@ -36,5 +36,5 @@ Here are my main takeaways:
 ---
 
 For more details, see the longer
-[conference report](https://neil-nipo-r-and-d.netlify.app/posts/azure-dev-summit/)
-and [workshop report](https://neil-nipo-r-and-d.netlify.app/posts/azure-dev-summit-workshop/).
+[conference report](https://neil-nipo-r-and-d.l6n.org/posts/azure-dev-summit/)
+and [workshop report](https://neil-nipo-r-and-d.l6n.org/posts/azure-dev-summit-workshop/).
